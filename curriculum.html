@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curriculum Vitae – Alejandro Sánchez Serna</title>
+  <title>Currículum Vitae – Alejandro Sánchez Serna</title>
+  <meta name="description" content="Currículum de Alejandro Sánchez Serna: 5.º de Derecho y ADE (UAM), Erasmus en Ghent University, inglés C1. Disponible para prácticas en verano 2027." />
+  <link rel="canonical" href="https://curriculum-alejandro-sanchez-serna.vercel.app/" />
   <style>
     * {
       margin: 0;
@@ -194,6 +196,15 @@
       width: 120px;
     }
 
+    /* MÓVIL */
+    @media (max-width: 600px) {
+      .page { margin: 0; padding: 28px 16px; box-shadow: none; }
+      .header h1 { font-size: 22px; }
+      .entry-header { flex-direction: column; gap: 2px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .lang-table td:first-child { width: 95px; }
+    }
+
     /* PRINT */
     @media print {
       body {
@@ -216,9 +227,8 @@
       <div class="subtitle">Estudiante de Derecho y ADE · Madrid, España</div>
       <div class="contact-info">
         <span>✉ <a href="mailto:alejandrosanchezserna@gmail.com">alejandrosanchezserna@gmail.com</a></span>
-        <span>📞 +34 601 270 053</span>
-        <span>🔗 <a href="https://www.linkedin.com/in/alejandro-s%C3%A1nchez-serna-419348226/" target="_blank">LinkedIn</a></span>
-        <span>📍 Calle Rutilo 21, Madrid, CP: 28041</span>
+        <span>🔗 <a href="https://www.linkedin.com/in/alejandro-s%C3%A1nchez-serna-419348226/" target="_blank" rel="noopener">LinkedIn</a></span>
+        <span>📍 Madrid, España</span>
       </div>
     </div>
 
@@ -226,7 +236,7 @@
     <div class="section">
       <div class="section-title">Perfil</div>
       <p class="profile-text">
-        Estudiante de Derecho y ADE con sólida base académica y gran interés en conectar con el cliente. Me adapto con facilidad a todo tipo de entornos, aportando siempre lo mejor de mí. Me caracterizo por mi facilidad para el trabajo en equipo, mi entusiasmo por aprender y desarrollar mis habilidades, y mi orientación a la satisfacción del cliente. En busca de una oportunidad laboral en la que adquirir más experiencia.
+        Estudiante de 5.º curso (de 6) del Doble Grado en Derecho y ADE en la Universidad Autónoma de Madrid, con nota media de 7,61/10 y un año de Erasmus en Ghent University (Bélgica) cursado en inglés. Interesado en Derecho Mercantil y M&amp;A, consultoría estratégica, banca corporativa y business development. Disponible para prácticas de verano 2027 en Madrid, a jornada completa desde el 5 de julio de 2027.
       </p>
     </div>
 
@@ -237,9 +247,24 @@
       <div class="entry">
         <div class="entry-header">
           <span class="entry-title">Doble Grado en Derecho y ADE</span>
-          <span class="entry-date">Sep. 2022 – En curso</span>
+          <span class="entry-date">Sep. 2022 – Jun. 2028 (previsto)</span>
         </div>
         <div class="entry-org">Universidad Autónoma de Madrid</div>
+        <div class="entry-desc">
+          Actualmente en 5.º curso (de 6). Nota media: <strong>7,61/10</strong>.<br>
+          Calificaciones destacadas: Métodos de Previsión 9,2 · Estadística Teórica 9,0 · Informática para la Gestión Empresarial 9,0 · Métodos Matemáticos para la Empresa 8,8 · Fundamentos de ADE 8,3 · Contabilidad Financiera 8,0 · Macroeconomía 8,0.
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Erasmus – Ghent University</span>
+          <span class="entry-date">Sep. 2025 – Jun. 2026</span>
+        </div>
+        <div class="entry-org">Gante, Bélgica</div>
+        <div class="entry-desc">
+          Asignaturas en inglés: Corporate Finance, Data Science in Economics, Production and Logistics Management, Organization Theory, Behavioural Economics and Finance, Marketing Fundamentals, Economics and Ethics, International Business Class.
+        </div>
       </div>
 
       <div class="entry">
@@ -265,6 +290,29 @@
 
       <div class="entry">
         <div class="entry-header">
+          <span class="entry-title">Dependiente – Campaña de Navidad</span>
+          <span class="entry-date">Nov. 2026 – Ene. 2027</span>
+        </div>
+        <div class="entry-org">Casa del Libro, Madrid</div>
+        <ul class="entry-list">
+          <li>Atención al cliente y venta en tienda durante la campaña de Navidad.</li>
+          <li>14 horas semanales en fin de semana, compatibles con los estudios.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Camarero / Personal de eventos</span>
+          <span class="entry-date">Sep. – Oct. 2026</span>
+        </div>
+        <div class="entry-org">Madrid</div>
+        <ul class="entry-list">
+          <li>Servicio de sala y apoyo en eventos, trabajando por turnos.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
           <span class="entry-title">Profesor de Refuerzo – Matemáticas y Lengua</span>
           <span class="entry-date">Ene.–Jun. 2023 · Ene.–Jun. 2024</span>
         </div>
@@ -281,16 +329,13 @@
 
     <!-- HABILIDADES -->
     <div class="section">
-      <div class="section-title">Aptitudes</div>
+      <div class="section-title">Competencias</div>
       <div class="skills-grid">
-        <div class="skill-item">Responsabilidad y compromiso</div>
-        <div class="skill-item">Capacidad de organización</div>
-        <div class="skill-item">Empatía y amabilidad</div>
-        <div class="skill-item">Flexibilidad horaria</div>
-        <div class="skill-item">Paciencia</div>
-        <div class="skill-item">Capacidad de improvisación</div>
-        <div class="skill-item">Persona observadora</div>
-        <div class="skill-item">Nivel alto de Excel y Word</div>
+        <div class="skill-item">Excel avanzado, Word y PowerPoint</div>
+        <div class="skill-item">Claude y Claude Code (uso avanzado diario): investigación, redacción, análisis de datos y automatización</div>
+        <div class="skill-item">Creación y publicación de webs con programación asistida por IA, GitHub y Vercel</div>
+        <div class="skill-item">Responsabilidad, organización y trabajo en equipo</div>
+        <div class="skill-item">Atención al cliente y comunicación</div>
       </div>
     </div>
 
@@ -304,7 +349,7 @@
         </tr>
         <tr>
           <td>Inglés</td>
-          <td>C1 – Cambridge English Advanced (puntuación 186)</td>
+          <td>C1 – Cambridge English Advanced, dic. 2024 (puntuación 186)</td>
         </tr>
         <tr>
           <td>Neerlandés</td>

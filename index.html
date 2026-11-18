@@ -3,770 +3,365 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alejandro Sánchez Serna</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
-
-    :root {
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --white: #f5f5f5;
-      --gray: #aaaaaa;
-      --dark: #111111;
-      --card: #1a1a1a;
-      --border: #2a2a2a;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--dark);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      background: rgba(17,17,17,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--gray);
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover { color: var(--gold); }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 120px 40px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-tag {
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    #hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(48px, 8vw, 88px);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 24px;
-    }
-
-    #hero h1 span { color: var(--gold); }
-
-    .hero-subtitle {
-      font-size: 16px;
-      color: var(--gray);
-      max-width: 520px;
-      margin-bottom: 44px;
-      line-height: 1.8;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #000;
-      padding: 13px 32px;
-      border-radius: 2px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: background 0.3s;
-    }
-
-    .btn-primary:hover { background: var(--gold-light); }
-
-    .btn-outline {
-      border: 1px solid var(--border);
-      color: var(--gray);
-      padding: 13px 32px;
-      border-radius: 2px;
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: border-color 0.3s, color 0.3s;
-    }
-
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--border);
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: 100px 60px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 50px;
-    }
-
-    /* ── ABOUT ── */
-    #about .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-text {
-      font-size: 15px;
-      color: var(--gray);
-      line-height: 1.9;
-    }
-
-    .about-text p + p { margin-top: 16px; }
-
-    .about-details {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .detail-item {
-      border-left: 2px solid var(--gold);
-      padding-left: 18px;
-    }
-
-    .detail-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .detail-value {
-      font-size: 14px;
-      color: var(--white);
-    }
-
-    /* ── CARDS ── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 30px;
-      transition: border-color 0.3s;
-    }
-
-    .card:hover { border-color: var(--gold); }
-
-    /* ── FORMACIÓN ── */
-    #formacion .entries {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .entry-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      border-radius: 4px;
-      padding: 28px 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      transition: border-color 0.3s, background 0.3s;
-    }
-
-    .entry-card:hover { background: #1f1f1f; }
-
-    .entry-card .info { flex: 1; }
-
-    .entry-card .title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .entry-card .org {
-      font-size: 13px;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .entry-card .desc {
-      font-size: 13px;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-
-    .entry-card .date {
-      font-size: 12px;
-      color: var(--gray);
-      white-space: nowrap;
-      padding-top: 3px;
-    }
-
-    /* ── EXPERIENCIA ── */
-    #experiencia .entries { display: flex; flex-direction: column; gap: 20px; }
-
-    .exp-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      border-radius: 4px;
-      padding: 28px 32px;
-      transition: background 0.3s;
-    }
-
-    .exp-card:hover { background: #1f1f1f; }
-
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px;
-      gap: 20px;
-    }
-
-    .exp-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .exp-date {
-      font-size: 12px;
-      color: var(--gray);
-      white-space: nowrap;
-    }
-
-    .exp-org {
-      font-size: 13px;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .exp-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .exp-list li {
-      font-size: 13.5px;
-      color: var(--gray);
-      padding-left: 18px;
-      position: relative;
-      line-height: 1.6;
-    }
-
-    .exp-list li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-    }
-
-    /* ── APTITUDES ── */
-    #aptitudes .skills-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 14px;
-    }
-
-    .skill-pill {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 14px 18px;
-      font-size: 13.5px;
-      color: var(--gray);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: border-color 0.3s, color 0.3s;
-    }
-
-    .skill-pill:hover { border-color: var(--gold); color: var(--white); }
-
-    .skill-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* ── IDIOMAS ── */
-    #idiomas .lang-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .lang-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 28px;
-      transition: border-color 0.3s;
-    }
-
-    .lang-card:hover { border-color: var(--gold); }
-
-    .lang-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-
-    .lang-level {
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .lang-bar-bg {
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
-      margin-bottom: 16px;
-    }
-
-    .lang-bar {
-      height: 3px;
-      border-radius: 2px;
-      background: linear-gradient(to right, var(--gold), var(--gold-light));
-    }
-
-    .lang-detail {
-      font-size: 12.5px;
-      color: var(--gray);
-      line-height: 1.7;
-    }
-
-    .lang-detail strong { color: var(--white); font-weight: 500; }
-
-    .cert-scores {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 16px;
-    }
-
-    .cert-score-item {
-      font-size: 12px;
-      color: var(--gray);
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .cert-score-item span { color: var(--white); }
-
-    /* ── CONTACTO ── */
-    #contacto {
-      text-align: center;
-      padding: 100px 60px 120px;
-    }
-
-    #contacto .section-title { margin-bottom: 20px; }
-
-    .contact-sub {
-      font-size: 15px;
-      color: var(--gray);
-      margin-bottom: 50px;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .contact-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 22px 32px;
-      text-decoration: none;
-      color: var(--gray);
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: border-color 0.3s, color 0.3s;
-    }
-
-    .contact-card:hover { border-color: var(--gold); color: var(--gold); }
-
-    .contact-icon { font-size: 18px; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 28px;
-      font-size: 12px;
-      color: #444;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 700px) {
-      nav { padding: 16px 24px; }
-      .nav-links { gap: 20px; }
-      section { padding: 70px 24px; }
-      #about .about-grid { grid-template-columns: 1fr; gap: 36px; }
-      .entry-card { flex-direction: column; }
-      .exp-header { flex-direction: column; gap: 4px; }
-    }
-  </style>
+  <title>Alejandro Sánchez Serna · Currículum · Derecho y ADE (UAM)</title>
+  <meta name="description" content="Currículum de Alejandro Sánchez Serna: 5.º de Derecho y ADE (UAM), Erasmus en Ghent University, inglés C1. Disponible para prácticas en verano 2027." />
+  <meta name="author" content="Alejandro Sánchez Serna" />
+  <meta name="theme-color" content="#f4f1ea" />
+  <link rel="canonical" href="https://curriculum-alejandro-sanchez-serna.vercel.app/" />
+  <link rel="alternate" hreflang="es" href="https://curriculum-alejandro-sanchez-serna.vercel.app/" />
+  <link rel="alternate" hreflang="en" href="https://curriculum-alejandro-sanchez-serna.vercel.app/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://curriculum-alejandro-sanchez-serna.vercel.app/" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:url" content="https://curriculum-alejandro-sanchez-serna.vercel.app/" />
+  <meta property="og:title" content="Alejandro Sánchez Serna · Currículum" />
+  <meta property="og:description" content="Estudiante de Derecho y ADE (UAM) · Erasmus en Ghent University · Inglés C1. Disponible para prácticas de verano 2027 en Madrid." />
+  <meta property="og:image" content="https://curriculum-alejandro-sanchez-serna.vercel.app/img/alejandro-sanchez-serna-og.jpg" />
+  <meta property="og:image:alt" content="Retrato de Alejandro Sánchez Serna" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Alejandro Sánchez Serna · Currículum" />
+  <meta name="twitter:description" content="Estudiante de Derecho y ADE (UAM) · Erasmus en Ghent University · Inglés C1. Disponible para prácticas de verano 2027 en Madrid." />
+  <meta name="twitter:image" content="https://curriculum-alejandro-sanchez-serna.vercel.app/img/alejandro-sanchez-serna-og.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alejandro Sánchez Serna",
+    "url": "https://curriculum-alejandro-sanchez-serna.vercel.app/",
+    "image": "https://curriculum-alejandro-sanchez-serna.vercel.app/img/alejandro-sanchez-serna-og.jpg",
+    "jobTitle": "Estudiante del Doble Grado en Derecho y ADE",
+    "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Universidad Autónoma de Madrid" },
+      { "@type": "CollegeOrUniversity", "name": "Ghent University" }
+    ],
+    "knowsLanguage": ["es", "en", "nl"],
+    "sameAs": ["https://www.linkedin.com/in/alejandro-s%C3%A1nchez-serna-419348226/"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400..600&display=swap" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">A · S · S</div>
-    <ul class="nav-links">
-      <li><a href="#about">Sobre mí</a></li>
-      <li><a href="#formacion">Formación</a></li>
-      <li><a href="#experiencia">Experiencia</a></li>
-      <li><a href="#idiomas">Idiomas</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+  <a class="skip-link" href="#sobre-mi">Saltar al contenido</a>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-tag">Madrid, España</div>
-    <h1>Alejandro<br><span>Sánchez Serna</span></h1>
-    <p class="hero-subtitle">
-      Estudiante de Derecho y ADE en la Universidad Autónoma de Madrid.
-      Orientado al cliente, con sólida formación académica y experiencia en entornos educativos.
-    </p>
-    <div class="hero-cta">
-      <a href="#contacto" class="btn-primary">Contactar</a>
-      <a href="#about" class="btn-outline">Conocerme</a>
-    </div>
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      scroll
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- SOBRE MÍ -->
-  <section id="about">
-    <div class="section-label">Sobre mí</div>
-    <div class="section-title">Quién soy</div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          Soy estudiante del Doble Grado en Derecho y ADE en la UAM, con una base académica sólida y una clara orientación hacia la atención al cliente y el trabajo en equipo.
-        </p>
-        <p>
-          Me adapto con facilidad a entornos dinámicos y multiculturales — algo que he podido desarrollar tanto en mis estudios como en mi experiencia como docente y en mi paso por la Universidad de Gante (Bélgica), donde cursé holandés.
-        </p>
-        <p>
-          Busco una oportunidad laboral en la que aportar mis habilidades, seguir aprendiendo y demostrar mi compromiso y responsabilidad.
-        </p>
-      </div>
-      <div class="about-details">
-        <div class="detail-item">
-          <div class="detail-label">Ubicación</div>
-          <div class="detail-value">Calle Rutilo 21, Madrid, CP 28041</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Universidad</div>
-          <div class="detail-value">Universidad Autónoma de Madrid</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Grado</div>
-          <div class="detail-value">Derecho + ADE (Doble Grado)</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Disponibilidad</div>
-          <div class="detail-value">Tiempo completo</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Intereses</div>
-          <div class="detail-value">Cultura, editorial, atención al público, inversión</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- FORMACIÓN -->
-  <section id="formacion">
-    <div class="section-label">Trayectoria académica</div>
-    <div class="section-title">Formación</div>
-    <div class="entries">
-
-      <div class="entry-card">
-        <div class="info">
-          <div class="title">Doble Grado en Derecho y ADE</div>
-          <div class="org">Universidad Autónoma de Madrid</div>
-          <div class="desc">Formación dual en ciencias jurídicas y administración de empresas, con enfoque analítico, jurídico y económico.</div>
-        </div>
-        <div class="date">Sep. 2022 – En curso</div>
-      </div>
-
-      <div class="entry-card">
-        <div class="info">
-          <div class="title">Microcredencial – Liga de Inversores</div>
-          <div class="org">Universidad Autónoma de Madrid</div>
-          <div class="desc">Programa de formación en inversión y mercados financieros, con enfoque práctico en análisis y toma de decisiones.</div>
-        </div>
-        <div class="date">Feb. 2025 – Jun. 2025</div>
-      </div>
-
-      <div class="entry-card">
-        <div class="info">
-          <div class="title">Dutch for Exchange Students</div>
-          <div class="org">Ghent University – University Language Centre (Bélgica)</div>
-          <div class="desc">Curso de neerlandés para estudiantes internacionales. Resultado: 15/20. Equivale a 3 créditos ECTS.</div>
-        </div>
-        <div class="date">Oct. – Dic. 2025</div>
-      </div>
-
-      <div class="entry-card">
-        <div class="info">
-          <div class="title">Bachillerato de Ciencias Sociales</div>
-          <div class="org">IES Enrique Tierno Galván, Madrid</div>
-        </div>
-        <div class="date">Sep. 2020 – Jun. 2022</div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- EXPERIENCIA -->
-  <section id="experiencia">
-    <div class="section-label">Historial laboral</div>
-    <div class="section-title">Experiencia</div>
-    <div class="entries">
-
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-title">Profesor de Refuerzo – Matemáticas y Lengua</div>
-          <div class="exp-date">Ene.–Jun. 2023 · Ene.–Jun. 2024</div>
-        </div>
-        <div class="exp-org">IES Enrique Tierno Galván, Madrid</div>
-        <ul class="exp-list">
-          <li>Aplicación de estrategias de motivación para incentivar el interés por el estudio.</li>
-          <li>Evaluación continua del progreso académico mediante pruebas y exámenes.</li>
-          <li>Detección y análisis de las necesidades especiales de los estudiantes.</li>
-          <li>Gestión de grupos de estudio para fomentar el aprendizaje colaborativo.</li>
-          <li>Supervisión del cumplimiento de tareas y proyectos escolares.</li>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">Alejandro Sánchez Serna</a>
+      <div class="header-right">
+        <ul class="nav-links">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#formacion">Formación</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#competencias">Competencias</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
+        <div class="lang-switch" aria-label="Idioma">
+          <span aria-current="true" lang="es">ES</span>
+          <a href="/en/" hreflang="en" lang="en" title="English version">EN</a>
+        </div>
       </div>
-
     </div>
-  </section>
+  </header>
 
-  <div class="divider"></div>
+  <main id="top">
 
-  <!-- APTITUDES -->
-  <section id="aptitudes">
-    <div class="section-label">Competencias</div>
-    <div class="section-title">Aptitudes</div>
-    <div class="skills-wrap">
-      <div class="skill-pill"><div class="skill-dot"></div>Responsabilidad y compromiso</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Capacidad de organización</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Empatía y amabilidad</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Flexibilidad horaria</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Paciencia</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Capacidad de improvisación</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Persona observadora</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Microsoft Excel – nivel alto</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Microsoft Word</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Atención al cliente</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Trabajo en equipo</div>
-      <div class="skill-pill"><div class="skill-dot"></div>Comunicación eficaz</div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- IDIOMAS -->
-  <section id="idiomas">
-    <div class="section-label">Lenguas</div>
-    <div class="section-title">Idiomas</div>
-    <div class="lang-grid">
-
-      <div class="lang-card">
-        <div class="lang-name">Español</div>
-        <div class="lang-level">Nativo</div>
-        <div class="lang-bar-bg"><div class="lang-bar" style="width:100%"></div></div>
-        <div class="lang-detail">Lengua materna.</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-in">
+          <div class="label">Madrid · Derecho y ADE · UAM</div>
+          <h1>Alejandro<br>Sánchez Serna<span class="soft">.</span></h1>
+          <p class="lead">
+            Estudiante de 5.º del Doble Grado en Derecho y ADE en la Universidad Autónoma de Madrid,
+            con un año de Erasmus en Ghent University. Me interesan el Derecho Mercantil y M&amp;A,
+            la consultoría estratégica y la banca corporativa.
+          </p>
+          <div class="cta-row">
+            <a href="/CV_Alejandro_Sanchez_Serna.pdf" class="btn btn-dark" download>
+              Descargar CV
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>
+            </a>
+            <a href="#contacto" class="btn btn-light">Contactar</a>
+          </div>
+          <p class="alt-cv">¿Lo prefieres en inglés? <a href="/CV_Alejandro_Sanchez_Serna_English.pdf" download hreflang="en">CV in English (PDF)</a></p>
+        </div>
+        <figure class="portrait">
+          <img src="/img/alejandro-sanchez-serna.webp" width="480" height="596" alt="Retrato de Alejandro Sánchez Serna" fetchpriority="high" />
+          <figcaption><span class="dot" aria-hidden="true"></span>Disponible · verano 2027</figcaption>
+        </figure>
       </div>
+    </section>
 
-      <div class="lang-card">
-        <div class="lang-name">Inglés</div>
-        <div class="lang-level">C1 – Cambridge Advanced</div>
-        <div class="lang-bar-bg"><div class="lang-bar" style="width:85%"></div></div>
-        <div class="lang-detail">
-          <strong>Cambridge English Advanced (CAE)</strong> · Grade C · C1<br>
-          Overall Score: <strong>186</strong> · Madrid, 18 dic. 2024
-          <div class="cert-scores">
-            <div class="cert-score-item">Reading <span>189</span></div>
-            <div class="cert-score-item">Use of English <span>192</span></div>
-            <div class="cert-score-item">Writing <span>190</span></div>
-            <div class="cert-score-item">Listening <span>185</span></div>
-            <div class="cert-score-item">Speaking <span>176</span></div>
+    <!-- DISPONIBILIDAD -->
+    <div class="wrap">
+      <div class="band reveal">
+        <div>
+          <div class="label">Disponibilidad</div>
+          <p>Busco prácticas de verano 2027 en Madrid, a jornada completa desde el 5 de julio.</p>
+        </div>
+        <a href="#contacto" class="btn">Hablemos →</a>
+      </div>
+    </div>
+
+    <!-- SOBRE MÍ -->
+    <section class="section" id="sobre-mi">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">01 — Perfil</div>
+          <h2>Quién soy</h2>
+        </div>
+        <div class="split">
+          <div></div>
+          <div class="reveal">
+            <div class="prose">
+              <p>Estudio 5.º curso (de 6) del Doble Grado en Derecho y ADE en la Universidad Autónoma de Madrid, con una nota media de 7,61/10 y mis mejores resultados en las asignaturas cuantitativas y de empresa.</p>
+              <p>He pasado el curso 2025-2026 de Erasmus en Ghent University (Bélgica), cursando en inglés asignaturas de finanzas, datos, operaciones y negocio internacional. Esa experiencia, junto con mi trabajo como docente y en atención al público, me ha enseñado a adaptarme a entornos exigentes y multiculturales.</p>
+              <p>Uso a diario herramientas de IA como Claude para investigar, redactar, analizar datos y automatizar tareas.</p>
+            </div>
+            <dl class="facts">
+              <div class="fact"><dt class="label">Ubicación</dt><dd>Madrid, España</dd></div>
+              <div class="fact"><dt class="label">Estudios</dt><dd>Doble Grado en Derecho y ADE · UAM · 5.º de 6</dd></div>
+              <div class="fact"><dt class="label">Nota media</dt><dd>7,61 / 10</dd></div>
+              <div class="fact"><dt class="label">Intereses</dt><dd>Derecho Mercantil y M&amp;A, consultoría estratégica, banca corporativa, business development</dd></div>
+            </dl>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="lang-card">
-        <div class="lang-name">Neerlandés</div>
-        <div class="lang-level">A1 – Nivel básico</div>
-        <div class="lang-bar-bg"><div class="lang-bar" style="width:20%"></div></div>
-        <div class="lang-detail">
-          <strong>Dutch for Exchange Students</strong><br>
-          Ghent University, Bélgica · Oct.–Dic. 2025<br>
-          Resultado: <strong>15/20</strong> · 3 créditos ECTS
+    <!-- FORMACIÓN -->
+    <section class="section" id="formacion">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">02 — Trayectoria académica</div>
+          <h2>Formación</h2>
+        </div>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">01</span>
+            <span class="date">Sep. 2022 – Jun. 2028 (previsto)</span>
+          </div>
+          <div class="row-body">
+            <h3>Doble Grado en Derecho y ADE</h3>
+            <div class="org">Universidad Autónoma de Madrid · 5.º curso (de 6) · Nota media 7,61/10</div>
+            <p>Asignaturas en curso: Derecho de Sociedades y Contratos Mercantiles, Derecho del Trabajo, Derecho Procesal Penal, Derecho de Familia y Sucesiones, Régimen Jurídico de la Actuación Administrativa.</p>
+            <p class="label">Calificaciones destacadas</p>
+            <div class="grades">
+              <div class="grade">Métodos de Previsión <span>9,2</span></div>
+              <div class="grade">Estadística Teórica <span>9,0</span></div>
+              <div class="grade">Informática para la Gestión Empresarial <span>9,0</span></div>
+              <div class="grade">Métodos Matemáticos para la Empresa <span>8,8</span></div>
+              <div class="grade">Fundamentos de ADE <span>8,3</span></div>
+              <div class="grade">Contabilidad Financiera <span>8,0</span></div>
+              <div class="grade">Macroeconomía <span>8,0</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">02</span>
+            <span class="date">Sep. 2025 – Jun. 2026</span>
+          </div>
+          <div class="row-body">
+            <h3>Erasmus – Ghent University</h3>
+            <div class="org">Facultad de Economía y Empresa · Gante, Bélgica</div>
+            <p>Asignaturas cursadas en inglés: Corporate Finance, Data Science in Economics, Production and Logistics Management, Organization Theory, Behavioural Economics and Finance, Marketing Fundamentals, Economics and Ethics e International Business Class.</p>
+            <p>Curso de neerlandés para estudiantes internacionales (University Language Centre): 15/20.</p>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">03</span>
+            <span class="date">Feb. 2025 – Jun. 2025</span>
+          </div>
+          <div class="row-body">
+            <h3>Microcredencial – Liga de Inversores</h3>
+            <div class="org">Universidad Autónoma de Madrid</div>
+            <p>Formación práctica en análisis de inversiones y mercados financieros.</p>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">04</span>
+            <span class="date">Sep. 2020 – Jun. 2022</span>
+          </div>
+          <div class="row-body">
+            <h3>Bachillerato de Ciencias Sociales</h3>
+            <div class="org">IES Enrique Tierno Galván, Madrid</div>
+            <p>Proyecto de economía mentorizado por profesionales de supply chain de empresas multinacionales.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="section" id="experiencia">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">03 — Historial laboral</div>
+          <h2>Experiencia</h2>
+        </div>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">01</span>
+            <span class="date">Nov. 2026 – Ene. 2027</span>
+          </div>
+          <div class="row-body">
+            <h3>Dependiente – Campaña de Navidad</h3>
+            <div class="org">Casa del Libro, Madrid</div>
+            <ul>
+              <li>Atención y asesoramiento al cliente en tienda.</li>
+              <li>Tiempo parcial (14 h semanales en fin de semana), compatibilizado con el 5.º curso del doble grado.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">02</span>
+            <span class="date">Sep. – Oct. 2026</span>
+          </div>
+          <div class="row-body">
+            <h3>Camarero / Personal de eventos</h3>
+            <div class="org">Por turnos · Madrid</div>
+            <ul>
+              <li>Servicio de comidas y bebidas, atención a los asistentes y mantenimiento de las zonas de servicio durante los eventos.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta">
+            <span class="num">03</span>
+            <span class="date">Ene.–Jun. 2023 · Ene.–Jun. 2024</span>
+          </div>
+          <div class="row-body">
+            <h3>Profesor de refuerzo de Matemáticas y Lengua</h3>
+            <div class="org">IES Enrique Tierno Galván, Madrid</div>
+            <ul>
+              <li>Seguimiento y evaluación continua del progreso académico de los alumnos mediante pruebas y exámenes.</li>
+              <li>Organización de grupos de estudio y supervisión de tareas y proyectos.</li>
+              <li>Detección de necesidades específicas y adaptación de la metodología a cada alumno.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMPETENCIAS E IDIOMAS -->
+    <section class="section" id="competencias">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="label">04 — Herramientas e idiomas</div>
+          <h2>Competencias</h2>
+        </div>
+
+        <article class="row reveal">
+          <div class="row-meta"><span class="label">Idiomas</span></div>
+          <div class="row-body">
+            <div class="grades" style="margin-top:0">
+              <div class="grade">Español <span>Nativo</span></div>
+              <div class="grade">Inglés <span>C1</span></div>
+              <div class="grade">Neerlandés <span>A1</span></div>
+            </div>
+            <p>Inglés: Cambridge English Advanced (CAE), diciembre de 2024, puntuación global 186, y un curso académico de estudios universitarios en inglés. Neerlandés: Dutch for Exchange Students, Ghent University (15/20).</p>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta"><span class="label">Herramientas</span></div>
+          <div class="row-body">
+            <div class="skills">
+              <div class="skill"><span class="num">01</span>Claude y Claude Code (uso avanzado diario): investigación, redacción, análisis de datos y automatización</div>
+              <div class="skill"><span class="num">02</span>Creación y publicación de webs con programación asistida por IA, GitHub y Vercel</div>
+              <div class="skill"><span class="num">03</span>Microsoft Excel – nivel avanzado</div>
+              <div class="skill"><span class="num">04</span>Microsoft Word y PowerPoint</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="row reveal">
+          <div class="row-meta"><span class="label">Personales</span></div>
+          <div class="row-body">
+            <div class="skills">
+              <div class="skill"><span class="num">01</span>Capacidad de análisis</div>
+              <div class="skill"><span class="num">02</span>Trabajo en equipo</div>
+              <div class="skill"><span class="num">03</span>Organización y responsabilidad</div>
+              <div class="skill"><span class="num">04</span>Comunicación escrita y oral</div>
+              <div class="skill"><span class="num">05</span>Atención al cliente</div>
+              <div class="skill"><span class="num">06</span>Adaptación a entornos internacionales</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="wrap">
+        <div class="label reveal">05 — Contacto</div>
+        <h2 class="contact-title reveal">Hablemos.</h2>
+        <div class="links reveal">
+          <a class="link-row" href="mailto:alejandrosanchezserna@gmail.com">
+            <span class="text"><small>Email</small>alejandrosanchezserna@gmail.com</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="link-row" href="https://www.linkedin.com/in/alejandro-s%C3%A1nchez-serna-419348226/" target="_blank" rel="noopener">
+            <span class="text"><small>LinkedIn</small>Alejandro Sánchez Serna</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="link-row down" href="/CV_Alejandro_Sanchez_Serna.pdf" download>
+            <span class="text"><small>PDF</small>CV en español</span>
+            <span class="arrow" aria-hidden="true">↓</span>
+          </a>
+          <a class="link-row down" href="/CV_Alejandro_Sanchez_Serna_English.pdf" download hreflang="en">
+            <span class="text"><small>PDF</small><span lang="en">CV in English</span></span>
+            <span class="arrow" aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <div class="section-label">Contacto</div>
-    <div class="section-title">Hablemos</div>
-    <p class="contact-sub">¿Interesado en ponerte en contacto? Estoy disponible por correo o LinkedIn.</p>
-    <div class="contact-links">
-      <a href="mailto:alejandrosanchezserna@gmail.com" class="contact-card">
-        <span class="contact-icon">✉</span>
-        alejandrosanchezserna@gmail.com
-      </a>
-      <a href="tel:+34601270053" class="contact-card">
-        <span class="contact-icon">📞</span>
-        +34 601 270 053
-      </a>
-      <a href="https://www.linkedin.com/in/alejandro-s%C3%A1nchez-serna-419348226/" target="_blank" class="contact-card">
-        <span class="contact-icon">🔗</span>
-        LinkedIn
-      </a>
-    </div>
-  </section>
+  </main>
 
   <footer>
-    © 2026 Alejandro Sánchez Serna · Madrid, España
+    <div class="wrap">
+      <span class="label">Alejandro Sánchez Serna</span>
+      <span class="label">Madrid · © 2026</span>
+    </div>
   </footer>
 
+  <script>
+    (function () {
+      // Reveal every block that is in view or already above it, so jumping via the menu never leaves hidden content.
+      var pending = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      function check() {
+        var limit = window.innerHeight * 0.92;
+        pending = pending.filter(function (el) {
+          if (el.getBoundingClientRect().top < limit) { el.classList.add('is-visible'); return false; }
+          return true;
+        });
+        if (!pending.length) window.removeEventListener('scroll', check);
+      }
+      window.addEventListener('scroll', check, { passive: true });
+      window.addEventListener('resize', check);
+      window.addEventListener('beforeprint', function () { pending.forEach(function (el) { el.classList.add('is-visible'); }); });
+      check();
+    })();
+  </script>
 </body>
 </html>
