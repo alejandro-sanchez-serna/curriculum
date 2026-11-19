@@ -360,20 +360,35 @@ a { color: inherit; }
   padding-top: 24px;
 }
 
-.links { margin-top: 40px; border-top: 1px solid var(--ink); }
+/* Contact links are real buttons: bordered cards with an arrow in a circle */
+.links {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
 
 .link-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
+  min-height: 96px;
+  padding: 20px 20px 20px 24px;
+  border: 1px solid var(--ink);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--ink);
   text-decoration: none;
-  font-size: clamp(20px, 2.6vw, 32px);
+  font-size: clamp(19px, 2vw, 26px);
   font-weight: 600;
-  letter-spacing: -0.03em;
-  transition: padding-left 0ms, transform 160ms var(--ease-out);
+  letter-spacing: -0.025em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 180ms var(--ease),
+    color 180ms var(--ease),
+    transform 160ms var(--ease-out);
 }
 
 .link-row small {
@@ -384,15 +399,29 @@ a { color: inherit; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  transition: color 180ms var(--ease);
 }
+
+.link-row .text { min-width: 0; overflow-wrap: break-word; }
 
 .link-row .arrow {
-  font-size: 0.9em;
-  transition: transform 200ms var(--ease-out);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 20px;
+  line-height: 1;
+  transition: background-color 180ms var(--ease), color 180ms var(--ease), transform 200ms var(--ease-out);
 }
 
-.link-row .text { min-width: 0; overflow-wrap: anywhere; }
+.link-row.primary { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
+.link-row.primary small { color: rgba(244, 241, 234, 0.65); }
+.link-row.primary .arrow { background: var(--navy-ink); color: var(--navy); }
 
 /* Footer */
 footer { margin-top: clamp(80px, 10vw, 140px); border-top: 1px solid var(--line); }
@@ -413,8 +442,11 @@ footer .wrap {
   .btn-dark:hover { background: #2b2b29; }
   .btn-light:hover { background: var(--ink); color: var(--paper); }
   .band .btn:hover { background: #ffffff; }
-  .link-row:hover .arrow { transform: translate(3px, -3px); }
-  .link-row.down:hover .arrow { transform: translateY(3px); }
+  .link-row:hover { background: var(--ink); color: var(--paper); }
+  .link-row:hover small { color: rgba(244, 241, 234, 0.65); }
+  .link-row:hover .arrow { background: var(--paper); color: var(--ink); transform: translate(2px, -2px); }
+  .link-row.down:hover .arrow { transform: translateY(2px); }
+  .link-row.primary:hover { background: #0c2340; color: var(--navy-ink); }
 }
 
 /* ── ENTRANCE MOTION (content stays visible without JS) ── */
@@ -485,7 +517,11 @@ footer .wrap {
   .skills { grid-template-columns: 1fr; }
 }
 
+.link-row:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+
 @media (max-width: 560px) {
+  .links { grid-template-columns: 1fr; }
+  .link-row { min-height: 84px; }
   .brand { font-size: 13px; }
   .hero h1 { margin-top: 18px; }
   .cta-row .btn { flex: 1 1 100%; }
